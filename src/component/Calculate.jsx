@@ -2,8 +2,13 @@
 import styled from 'styled-components'
 import Header from './Header.jsx'
 import Button from './Button.jsx'
+import { useNavigate } from 'react-router-dom';
 
 function Calculate() {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/calculator/result');
+    }
   return (
     <div>
         <Header />
@@ -32,7 +37,7 @@ function Calculate() {
                 <Input placeholder='월세, 관리비 등 총 합산(한 달 기준)'/> 만 원
             </Row>
         </Container>
-        <Button />
+        <Button text="결과 확인하기" onClick={handleClick}/>
         </Layout>
     </div>
   )

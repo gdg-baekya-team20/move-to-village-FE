@@ -1,13 +1,11 @@
 // import React from 'react'
 import styled from 'styled-components'
 
-function Button() {
+function Button({ text, onClick }) { // text와 onClick을 props로 받음
   return (
-    <div>
-        <ButtonContainer>
-            <ButtonContent>결과 확인하기</ButtonContent>
-        </ButtonContainer>
-    </div>
+    <ButtonContainer>
+      <ButtonContent onClick={onClick}>{text}</ButtonContent>
+    </ButtonContainer>
   )
 }
 
@@ -17,7 +15,7 @@ const ButtonContainer = styled.div`
 `;
 
 const ButtonContent = styled.button`
-    width: 25rem;
+  width: 25rem;
   height: 4rem;
   background-color: #4E6453;
   border: none;
@@ -26,4 +24,9 @@ const ButtonContent = styled.button`
   color: white;
   font-size: 24px;
   font-weight: bold;
+
+  &:hover {
+    background-color: #3B5043; /* Hover 효과 추가 */
+    cursor: pointer;
+  }
 `;
