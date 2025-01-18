@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 import Header from './Header';
-import recomData from './mock/RecomMock.json'; // JSON 데이터 import
+// import recomData from './mock/RecomMock.json'; // JSON 데이터 import
+import { useLocation } from 'react-router-dom';
 
 function RecomResult() {
-  const data = recomData[0]; // 전달받은 첫 번째 지역 데이터만 출력
+//   const data = recomData[0];
+ const location = useLocation();
+ const data = location?.state.data;
+ console.log(data);
+
+  
 
   return (
     <div>

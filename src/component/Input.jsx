@@ -61,7 +61,7 @@ function Input() {
           console.log('서버 응답:', result);
     
           // 성공 시 결과 페이지로 이동
-          navigate('/form/result');
+          navigate('/form/result', {state : {data: response.data}});
         } catch (error) {
           console.error('POST 요청 중 에러 발생:', error);
         }

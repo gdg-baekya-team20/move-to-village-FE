@@ -106,6 +106,7 @@ const Image = styled.img`
 
 const Explain = styled.div`
     font-size: 18px;
+    margin-top: 8px;
 `;
 
 const Content = styled.div`
