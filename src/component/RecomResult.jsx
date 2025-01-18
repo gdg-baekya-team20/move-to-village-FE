@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Header from './Header';
 import recomData from './mock/RecomMock.json'; // JSON 데이터 import

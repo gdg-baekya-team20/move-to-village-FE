@@ -1,14 +1,16 @@
-import React from "react";
+// import React from "react";
 import Header from "./Header";
 import calculData from "./mock/calculMock.json"; // JSON 데이터를 import
 import styled from "styled-components";
 import arrow from '../assets/arrow.png';
 import Button from '../component/Button.jsx';
 import car from '../assets/car.png';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Result() {
     const data = calculData[0];
+    // const location = useLocation();
+    // const data = location.state?.data;
     const navigate = useNavigate();
     const handleClick = () => {
         navigate('/form');

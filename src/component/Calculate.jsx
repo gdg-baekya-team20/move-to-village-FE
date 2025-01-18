@@ -14,6 +14,8 @@ function Calculate() {
     const [transportationCost, setTransportationCost] = useState('');
     const [housingCost, setHousingCost] = useState('');
 
+    const isFormValid = familyCount && foodCost && transportationCost && housingCost;
+
     const handleSubmit = async () => {
         // URL에 데이터를 추가
         const queryParams = new URLSearchParams({
@@ -25,9 +27,9 @@ function Calculate() {
 
         try {
             // 서버로 POST 요청 보내기
-            await axios.get(`${import.meta.env.VITE_BACK_URL}/api/relocation/cost?${queryParams}`);
+            const response = await axios.get(`${import.meta.env.VITE_BACK_URL}/api/relocation/cost?${queryParams}`);
             console.log('데이터 전송 성공:', queryParams);
-            navigate('/calculator/result'); // 결과 페이지로 이동
+            navigate('/calculator/result', { state: { data: response.data } });
         } catch (error) {
             console.error('데이터 전송 실패:', error);
         }
@@ -59,7 +61,7 @@ function Calculate() {
                             placeholder="식비를 입력해주세요(한 달 기준)"
                             value={foodCost}
                             onChange={(e) => setFoodCost(e.target.value)}
-                        /> 만 원
+                        /> {' '}만 원
             </Row>
             <Row>
                 <Text>교통비</Text>
@@ -68,7 +70,7 @@ function Calculate() {
                             placeholder="차량 관리비, 대중교통 요금 등(한 달 기준)"
                             value={transportationCost}
                             onChange={(e) => setTransportationCost(e.target.value)}
-                        /> 만 원
+                        /> {' '}만 원
             </Row>
             <Row>
                 <Text>주거비</Text>
@@ -77,10 +79,10 @@ function Calculate() {
                             placeholder="월세, 관리비 등 총 합산(한 달 기준)"
                             value={housingCost}
                             onChange={(e) => setHousingCost(e.target.value)}
-                        /> 만 원
+                        /> {' '}만 원
             </Row>
         </Container>
-        <Button text="결과 확인하기" onClick={handleSubmit}/>
+        <Button text="결과 확인하기" onClick={handleSubmit} disabled={!isFormValid}/>
         </Layout>
     </div>
   )
@@ -148,9 +150,11 @@ const Input = styled.input`
     width: 15rem;
     padding: 10px;
     margin-right: 3px;
+    text-align: right;
 
     &::placeholder{
         color: #A9A9A9;
         margin-bottom: 10px;
+        text-align: left;
     }
 `;

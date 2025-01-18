@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Header from './Header'
 import styled from 'styled-components'
 import Button from './Button'
@@ -11,14 +11,50 @@ function Input() {
     const [priority1, setPriority1] = useState('');
       const [priority2, setPriority2] = useState('');
       const [priority3, setPriority3] = useState('');
+      const [additionalConditions, setAdditionalConditions] = useState('');
+
+      const isFormValid = purpose && priority1 && priority2 && priority3 && additionalConditions;
 
     const handleSelectChange = (event) => {
         setPurpose(event.target.value); // 드롭다운 값 변경 처리
       };
 
-    const handleClick = () => {
-        navigate('/form/result');
-    }
+      const handleTextAreaChange = (event) => {
+        setAdditionalConditions(event.target.value);
+      };
+    
+
+      const handleClick = async () => {
+        // 요청 데이터 생성
+        const requestData = {
+          purpose,
+          priorities: [priority1, priority2, priority3],
+          additionalConditions,
+        };
+    
+        try {
+          // POST 요청 보내기
+          const response = await fetch(`${import.meta.env.VITE_BACK_URL}/api/location/recommendation`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData),
+          });
+    
+          if (!response.ok) {
+            throw new Error('POST 요청 실패');
+          }
+    
+          const result = await response.json();
+          console.log('서버 응답:', result);
+    
+          // 성공 시 결과 페이지로 이동
+          navigate('/form/result');
+        } catch (error) {
+          console.error('POST 요청 중 에러 발생:', error);
+        }
+      };
     
   return (
     <div>
@@ -31,12 +67,11 @@ function Input() {
                     <option value="" disabled>
                       선택하세요
                     </option>
-                    <option value="farming">귀농</option>
-                    <option value="job_startup">일자리/창업</option>
-                    <option value="quality_of_life">삶의 질(건강, 가족과의 시간)</option>
-                    <option value="retirement">귀향 및 은퇴</option>
-                    <option value="economic_reason">경제적 이유(생활비, 주거비 절감)</option>
-                    <option value="others">기타</option>
+                    <option value="귀농">귀농</option>
+                    <option value="일자리">일자리</option>
+                    <option value="삶의질">삶의 질</option>
+                    <option value="귀향및은퇴">귀향 및 은퇴</option>
+                    <option value="없음">없음</option>
               </Select>
             </Row>
             <PriorityBox>
@@ -46,11 +81,11 @@ function Input() {
                   <option value="" disabled>
                     1순위
                   </option>
-                  <option value="transportation">교통</option>
-                  <option value="culture">문화</option>
-                  <option value="healthcare">의료시설</option>
-                  <option value="nature">자연환경</option>
-                  <option value="cost_of_living">물가</option>
+                  <option value="교통">교통</option>
+                  <option value="문화">문화</option>
+                  <option value="의료시설">의료시설</option>
+                  <option value="자연환경">자연환경</option>
+                  <option value="물가">물가</option>
                 </Select>
               </Row>
               <Row>
@@ -59,11 +94,11 @@ function Input() {
                   <option value="" disabled>
                     2순위
                   </option>
-                  <option value="transportation">교통</option>
-                  <option value="culture">문화</option>
-                  <option value="healthcare">의료시설</option>
-                  <option value="nature">자연환경</option>
-                  <option value="cost_of_living">물가</option>
+                  <option value="교통">교통</option>
+                  <option value="문화">문화</option>
+                  <option value="의료시설">의료시설</option>
+                  <option value="자연환경">자연환경</option>
+                  <option value="물가">물가</option>
                 </Select>
               </Row>
               <Row>
@@ -72,20 +107,20 @@ function Input() {
                   <option value="" disabled>
                      3순위
                   </option>
-                  <option value="transportation">교통</option>
-                  <option value="culture">문화</option>
-                  <option value="healthcare">의료시설</option>
-                  <option value="nature">자연환경</option>
-                  <option value="cost_of_living">물가</option>
+                  <option value="교통">교통</option>
+                  <option value="문화">문화</option>
+                  <option value="의료시설">의료시설</option>
+                  <option value="자연환경">자연환경</option>
+                  <option value="물가">물가</option>
                 </Select>
               </Row>
               </PriorityBox>
         
         <Row>
             <Text>Q. 추가 조건</Text>
-            <Area />
+            <Area value={additionalConditions} onChange={handleTextAreaChange} placeholder="추가 조건을 입력하세요" />
         </Row>
-        <Button text="추천 지역 결과보기" onClick={handleClick} />
+        <Button text="추천 지역 결과보기" onClick={handleClick} disabled={!isFormValid}/>
         </Container>
     </div>
   )
@@ -162,9 +197,10 @@ const Area = styled.textarea`
     font-size: 16px; /* 글꼴 크기 */
     border-radius:5px;
     margin-bottom: -2rem;
+    padding: 5px;
 
     ::placeholder {
-        color: #A9A9A9; /* placeholder 색상 */
+        color: #b7b4b4; /* placeholder 색상 */
     }
 
     &:focus {

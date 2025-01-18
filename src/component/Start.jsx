@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -58,4 +58,5 @@ const Button = styled.button`
   color: #4E6453;
   font-size: 24px;
   font-weight: bold;
+  cursor: pointer;
 `;
