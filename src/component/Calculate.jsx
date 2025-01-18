@@ -3,12 +3,35 @@ import styled from 'styled-components'
 import Header from './Header.jsx'
 import Button from './Button.jsx'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
 
 function Calculate() {
     const navigate = useNavigate();
-    const handleClick = () => {
-        navigate('/calculator/result');
-    }
+
+    const [familyCount, setFamilyCount] = useState(null); // 가구원 수
+    const [foodCost, setFoodCost] = useState('');
+    const [transportationCost, setTransportationCost] = useState('');
+    const [housingCost, setHousingCost] = useState('');
+
+    const handleSubmit = async () => {
+        // URL에 데이터를 추가
+        const queryParams = new URLSearchParams({
+            familyCount: familyCount || '',
+            foodCost: foodCost || '',
+            transportationCost: transportationCost || '',
+            housingCost: housingCost || '',
+        }).toString();
+
+        try {
+            // 서버로 POST 요청 보내기
+            await axios.get(`${import.meta.env.VITE_BACK_URL}/api/relocation/cost?${queryParams}`);
+            console.log('데이터 전송 성공:', queryParams);
+            navigate('/calculator/result'); // 결과 페이지로 이동
+        } catch (error) {
+            console.error('데이터 전송 실패:', error);
+        }
+    };
   return (
     <div>
         <Header />
@@ -18,26 +41,46 @@ function Calculate() {
             <Row>
                 <Text>가구원 수</Text>
                 <Buttons>
-                    <Count>1인</Count>
-                    <Count>2인</Count>
-                    <Count>3인</Count>
-                    <Count>4인</Count>
+                    {[1, 2, 3, 4].map((count) => (
+                        <Count
+                            key={count}
+                            onClick={() => setFamilyCount(count)}
+                            isSelected={familyCount === count}
+                        >
+                            {count}인
+                        </Count>
+                    ))}
                 </Buttons>
             </Row>
             <Row>
                 <Text>식비</Text>
-                <Input placeholder='식비를 입력해주세요(한 달 기준)'/> 만 원
+                <Input
+                            type="number"
+                            placeholder="식비를 입력해주세요(한 달 기준)"
+                            value={foodCost}
+                            onChange={(e) => setFoodCost(e.target.value)}
+                        /> 만 원
             </Row>
             <Row>
                 <Text>교통비</Text>
-                <Input placeholder='차량 관리비, 대중교통 요금 등(한 달 기준)'/> 만 원
+                <Input
+                            type="number"
+                            placeholder="차량 관리비, 대중교통 요금 등(한 달 기준)"
+                            value={transportationCost}
+                            onChange={(e) => setTransportationCost(e.target.value)}
+                        /> 만 원
             </Row>
             <Row>
                 <Text>주거비</Text>
-                <Input placeholder='월세, 관리비 등 총 합산(한 달 기준)'/> 만 원
+                <Input
+                            type="number"
+                            placeholder="월세, 관리비 등 총 합산(한 달 기준)"
+                            value={housingCost}
+                            onChange={(e) => setHousingCost(e.target.value)}
+                        /> 만 원
             </Row>
         </Container>
-        <Button text="결과 확인하기" onClick={handleClick}/>
+        <Button text="결과 확인하기" onClick={handleSubmit}/>
         </Layout>
     </div>
   )
@@ -82,15 +125,14 @@ const Text = styled.div`
 `;
 
 const Count = styled.button`
-    background-color: white;
+    background-color: ${(props) => (props.isSelected ? '#B8C9B5' : 'white')};
+    color: ${(props) => (props.isSelected ? 'white' : '#4E6453')};
+    border: ${(props) => (props.isSelected ? 'none' : '1.2px solid #4E6453')};
     width: 3.5rem;
     height: 2rem;
-    border-style: solid;
-    border-width: 1.2px;
-    border-color: #4E6453;
-    color: #4E6453;
     border-radius: 10px;
     font-size: 18px;
+
 
 `;
 
