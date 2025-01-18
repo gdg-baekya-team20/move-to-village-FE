@@ -1,5 +1,5 @@
 // import './App.css'
-import Calculate from '/Users/chaerin/Desktop/move_to_village/src/component/calculate'
+import Calculate from './component/Calculate.jsx'
 import Start from './component/Start.jsx';
 import Result from './component/Result.jsx';
 import Input from './component/Input.jsx';
