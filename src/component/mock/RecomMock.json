@@ -1,0 +1,47 @@
+[
+	{
+		"ruralName": "여수시",
+		"ruralThumbnailUrl": "https://example.com/thumbnails/yeosu.jpg",
+		"score": [ 
+			{"name": "문화", "score": 60},
+			{"name": "교통", "score": 40},
+			{"name": "의료", "score": 40},
+			{"name": "자연환경", "score": 90}
+		],
+		"housingCost": 50,
+		"foodCost": 40,
+		"transportationCost": 30,
+		"ruralDescription": "여수시는 짱예쁜 바다와 관광으로 유명한 도시입니다. 인구 10만 정도이며, 귀촌과 귀농 모두 가능하고 지원을 어쩌구 저쩌구.",
+		"ruralUrl": "https://jnfarm.jeonnam.go.kr/#0"
+	},
+	{
+		"ruralName": "순천시",
+		"ruralThumbnailUrl": "https://example.com/thumbnails/suncheon.jpg",
+		"score": [ 
+			{"name": "문화", "score": 80},
+			{"name": "교통", "score": 70},
+			{"name": "의료", "score": 50},
+			{"name": "자연환경", "score": 85}
+		],
+		"housingCost": 60,
+		"foodCost": 45,
+		"transportationCost": 35,
+		"ruralDescription": "순천시는 순천만 국가정원으로 유명하며, 자연 친화적인 생활을 원하는 사람들에게 적합한 도시입니다. 귀촌 지원이 활발하게 이루어지고 있습니다.",
+		"ruralUrl": "https://scfarm.jeonnam.go.kr/#0"
+	},
+	{
+		"ruralName": "광양시",
+		"ruralThumbnailUrl": "https://example.com/thumbnails/gwangyang.jpg",
+		"score": [ 
+			{"name": "문화", "score": 70},
+			{"name": "교통", "score": 60},
+			{"name": "의료", "score": 55},
+			{"name": "자연환경", "score": 80}
+		],
+		"housingCost": 55,
+		"foodCost": 50,
+		"transportationCost": 40,
+		"ruralDescription": "광양시는 산업도시와 자연이 공존하며, 다양한 일자리와 생활 환경을 제공합니다. 귀농과 귀촌 모두 매력적인 선택지로 평가받고 있습니다.",
+		"ruralUrl": "https://gyfarm.jeonnam.go.kr/#0"
+	}
+]
