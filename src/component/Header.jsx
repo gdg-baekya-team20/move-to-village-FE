@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import logo from '../assets/logo.png'
 import styled from 'styled-components';
 
@@ -23,7 +23,6 @@ const Container = styled.div`
   width: 100%;
   height: 5rem;
   background-color: #4E6453;
-  /* z-index: 100; 다른 요소 위로 올라오도록 설정 */
 `;
 
 const Logo = styled.img`
