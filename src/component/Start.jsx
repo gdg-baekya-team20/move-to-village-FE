@@ -1,13 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 function Start() {
+    const navigate = useNavigate();
   return (
     <div>
         <Background>
             <Title><Shadow>이도향촌(離都向村)</Shadow> <br /> : 서울을 떠나 지방에서 산다면?</Title>
             <Text>지방 이주 시 돈을 얼마나 절약할 수 있는지 알려주고, <br />나에게 맞는 지역을 추천해주는 서비스입니다</Text>
-            <Button>시작하기</Button>
+            <Button onClick={() => navigate('/calculator')}>시작하기</Button>
         </Background>
     </div>
   )
