@@ -1,16 +1,15 @@
 // import React from "react";
 import Header from "./Header";
-import calculData from "./mock/calculMock.json"; // JSON 데이터를 import
+// import calculData from "./mock/calculMock.json"; // JSON 데이터를 import
 import styled from "styled-components";
 import arrow from '../assets/arrow.png';
 import Button from '../component/Button.jsx';
-import car from '../assets/car.png';
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Result() {
-    const data = calculData[0];
-    // const location = useLocation();
-    // const data = location.state?.data;
+    // const data = calculData[0];
+    const location = useLocation();
+    const data = location.state?.data;
     const navigate = useNavigate();
     const handleClick = () => {
         navigate('/form');
@@ -33,16 +32,16 @@ function Result() {
           <Percent>생활비를 {data.savedPercentage}% 절약할 수 있어요!</Percent>
           <ContentBox>
               <Content>
-                <Image src={car} />
-                <Explain>1년이면 명품백 하나를 <br />구입할 수 있는 돈이에요!</Explain>
+                <Image src={data?.budgetItems[0].imageUrl} />
+                <Explain>1년이면 {data?.budgetItems[0].name}을(를) <br />구입할 수 있는 금액이에요!</Explain>
               </Content>
               <Content>
-                  <Image src={car} />
-                  <Explain>10년이면 자동차 한 대를 <br />구입할 수 있는 돈이에요!</Explain>
+                  <Image src={data?.budgetItems[1].imageUrl} />
+                  <Explain>5년이면 {data?.budgetItems[1].name}을(를) <br />구입할 수 있는 금액이에요!</Explain>
               </Content>
               <Content>
-                  <Image src={car} />
-                  <Explain>20년이면 아파트 하나를 <br />구입할 수 있는 돈이에요!</Explain>
+                  <Image src={data?.budgetItems[2].imageUrl} />
+                  <Explain>20년이면 {data?.budgetItems[2].name}을(를) <br />구입할 수 있는 금액이에요!</Explain>
               </Content>
         </ContentBox>
         <Button text="이주 지역 추천받기" onClick={handleClick} />
