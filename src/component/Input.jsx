@@ -8,6 +8,8 @@ function Input() {
 
     const navigate = useNavigate();
     const [purpose, setPurpose] = useState("");
+    const [customPurpose, setCustomPurpose] = useState('');
+
     const [priority1, setPriority1] = useState('');
       const [priority2, setPriority2] = useState('');
       const [priority3, setPriority3] = useState('');
@@ -16,8 +18,17 @@ function Input() {
       const isFormValid = purpose && priority1 && priority2 && priority3 && additionalConditions;
 
     const handleSelectChange = (event) => {
-        setPurpose(event.target.value); // 드롭다운 값 변경 처리
-      };
+        setPurpose(event.target.value);
+
+        // "기타"를 선택하면 customPurpose 초기화
+        if (event.target.value !== '기타') {
+            setCustomPurpose('');
+        }
+    };
+
+    const handleCustomPurposeChange = (event) => {
+        setCustomPurpose(event.target.value);
+    };
 
       const handleTextAreaChange = (event) => {
         setAdditionalConditions(event.target.value);
@@ -71,10 +82,22 @@ function Input() {
                     <option value="일자리">일자리</option>
                     <option value="삶의질">삶의 질</option>
                     <option value="귀향및은퇴">귀향 및 은퇴</option>
-                    <option value="없음">없음</option>
+                    <option value="기타">기타</option>
               </Select>
             </Row>
+            <Row>
+                <Text></Text>
+              {purpose === '기타' && (
+                <Area
+                    type="text"
+                    placeholder="이주 목적을 입력하세요"
+                    value={customPurpose}
+                    onChange={handleCustomPurposeChange}
+                />
+            )}
+            </Row>
             <PriorityBox>
+                
             <Row>
               <Text>Q. 삶의 우선순위</Text>
                 <Select value={priority1} onChange={(event) => setPriority1(event.target.value)}>
@@ -120,7 +143,9 @@ function Input() {
             <Text>Q. 추가 조건</Text>
             <Area value={additionalConditions} onChange={handleTextAreaChange} placeholder="추가 조건을 입력하세요" />
         </Row>
+        <ButtonContainer>
         <Button text="추천 지역 결과보기" onClick={handleClick} disabled={!isFormValid}/>
+        </ButtonContainer>
         </Container>
     </div>
   )
@@ -139,7 +164,7 @@ const Container = styled.div`
 const Title = styled.div`
     font-size: 36px;
     margin-top: 5rem;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
     color: #464646;
     font-weight: bold;
 `;
@@ -186,8 +211,8 @@ const PriorityBox = styled.div`
 `;
 
 const Area = styled.textarea`
-    width: 16rem;
-    height: 8rem;
+    width: 15rem;
+    height: 5rem;
     color: #000000; /* 텍스트 색상 변경 */
     border-style: solid;
     border-width: 1.2px;
@@ -196,7 +221,7 @@ const Area = styled.textarea`
     overflow: auto;
     font-size: 16px; /* 글꼴 크기 */
     border-radius:5px;
-    margin-bottom: -2rem;
+    /* margin-bottom: -1rem; */
     padding: 5px;
 
     ::placeholder {
@@ -207,4 +232,8 @@ const Area = styled.textarea`
         outline: none; /* 포커스 시 기본 스타일 제거 */
         border-color: #4E6453; /* 포커스 시 테두리 색상 변경 */
     }
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: -3rem;  
 `;
