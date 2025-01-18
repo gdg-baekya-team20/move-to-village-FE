@@ -1,63 +1,43 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import Header from './Header';
 import recomData from './mock/RecomMock.json'; // JSON 데이터 import
 
 function RecomResult() {
-  const [currentIndex, setCurrentIndex] = useState(0); // 현재 지역 인덱스
-  const data = recomData[currentIndex]; // 현재 인덱스에 해당하는 데이터
-
-  // 이전 지역으로 이동
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? recomData.length - 1 : prevIndex - 1
-    );
-  };
-
-  // 다음 지역으로 이동
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === recomData.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+  const data = recomData[0]; // 전달받은 첫 번째 지역 데이터만 출력
 
   return (
     <div>
       <Header />
       <Container>
-        <Navigation>
-          <NavButton onClick={handlePrev}>&lt;</NavButton>
-          <Content>
-            <Text>추천 지역은</Text>
-            <Title>{data.ruralName}</Title>
-            <ImageBox>
-                <Image src={data.ruralThumbnailUrl} alt={data.ruralName} />
-            </ImageBox>
-            <Scores>
-              {data.score.map((item, index) => (
-                <ScoreBox key={index}>
-                  <Circle>{item.score}점</Circle>
-                  <ScoreText>{item.name}</ScoreText>
-                </ScoreBox>
-              ))}
-            </Scores>
-            <Box>
-              <Row><Costs><Element>평균 주거비</Element> {data.housingCost}만 원</Costs></Row>
-              <Row><Costs><Element>교통비</Element> {data.transportationCost}만 원</Costs></Row>
-              <Row><Costs><Element>식비 </Element>{data.foodCost}만 원</Costs></Row>
-              <Result>서울 생활 대비 얼마얼마 절약 가능!</Result>
-            </Box>
-            <Description>{data.ruralDescription}</Description>
-            <StyledLink
-              href={data.ruralUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {data.ruralName} 귀촌 관련 페이지 바로 가기
-            </StyledLink>
-          </Content>
-          <NavButton onClick={handleNext}>&gt;</NavButton>
-        </Navigation>
+        <Content>
+          <Text>추천 지역은</Text>
+          <Title>{data.ruralName}</Title>
+          <ImageBox>
+            <Image src={data.ruralThumbnailUrl} alt={data.ruralName} />
+          </ImageBox>
+          <Scores>
+            {data.score.map((item, index) => (
+              <ScoreBox key={index}>
+                <Circle>{item.score}점</Circle>
+                <ScoreText>{item.name}</ScoreText>
+              </ScoreBox>
+            ))}
+          </Scores>
+          <Box>
+            <Row><Costs><Element>평균 주거비</Element> {data.housingCost}만 원</Costs></Row>
+            <Row><Costs><Element>교통비</Element> {data.transportationCost}만 원</Costs></Row>
+            <Row><Costs><Element>식비 </Element>{data.foodCost}만 원</Costs></Row>
+            <Result>서울 생활 대비 얼마얼마 절약 가능!</Result>
+          </Box>
+          <Description>{data.ruralDescription}</Description>
+          <StyledLink
+            href={data.ruralUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {data.ruralName} 귀촌 관련 페이지 바로 가기
+          </StyledLink>
+        </Content>
       </Container>
     </div>
   );
@@ -73,25 +53,6 @@ const Container = styled.div`
   margin-top: 3rem;
 `;
 
-const Navigation = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-`;
-
-const NavButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #4e6453;
-  cursor: pointer;
-
-  &:hover {
-    color: #6a856f;
-  }
-`;
-
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -100,7 +61,7 @@ const Content = styled.div`
 
 const ImageBox = styled.div`
   width: 15rem;
-  height: 15rem;  
+  height: 15rem;
 `;
 
 const Image = styled.img`
@@ -113,7 +74,6 @@ const Text = styled.div`
   font-weight: 500;
   color: #464646;
 `;
-
 
 const Title = styled.div`
   margin: 1.5rem 0;
