@@ -93,3 +93,8 @@ AI 서버는 Ubuntu환경에서 구축되었으며, Python 3.12을 기반으로 
 > https://kosis.kr/visual/eRegionJipyo/themaJipyo/eRegionJipyoThemaJipyoView.do?themaId=A_01_04&menuThemaId=A_01_04_02&jipyoId=5697_7164&jipyoNm=&graphTypeGbn=THEMA&statId=&regionChkVal=00%40&chartGbn=DTypeChart&selectPrdDe=&themaGbn=subjectJipyo&detailJipyoId=&themaGbnMenu=subjectJipyo&chooseYm=&jipyo1PrdDe=03e1d3e1d&AreaChoiceCombo=A_01_04
 > https://www.numbeo.com/cost-of-living/
 >
+---
+
+## 정보
+- 인원 : 5명(FE : 1명, BE : 3명, AI : 1명)
+- 기간 : 16시간
