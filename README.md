@@ -1,4 +1,4 @@
-# React + Vite
+# 지역 이주 계산기 & 이주 지역 추천 서비스
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
