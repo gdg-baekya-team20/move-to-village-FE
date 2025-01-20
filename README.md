@@ -1,4 +1,4 @@
-# 지역 이주 계산기 & 이주 지역 추천 서비스
+# 이도향촌 - 도시를 떠나는 당신을 위한 이주 생활비 절감 계산기 & 이주 지역 추천 서비스
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
