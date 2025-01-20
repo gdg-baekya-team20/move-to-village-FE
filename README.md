@@ -26,6 +26,7 @@
 ### 2. 이주 지역 추천 기능
 
 <img width="1650" alt="Image" src="https://github.com/user-attachments/assets/efc6edf7-ac45-40cf-9d44-a9ac604b4cec" />
+<img width="1650" alt="Image" src="https://github.com/user-attachments/assets/56fe8683-7430-4c49-bf20-375c38e54c9d" />
 
 이주 목적, 삶의 우선순위(1, 2, 3순위), 추가 조건을 입력받고 입력받은 데이터를 바탕으로 AI 기반 분석을 통해 적절한 이주 지역을 추천해주고, 이주 시의 이점을 더 구체적으로 보여준다. 
 
