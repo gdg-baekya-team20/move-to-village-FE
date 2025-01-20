@@ -9,9 +9,7 @@
 
 ## 프로젝트 개요
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/2b8f301c-d10b-4f79-aabe-2154552fd005/1f5d21e4-34f3-4a2c-940a-10b242476034/image.png)
-
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/2b8f301c-d10b-4f79-aabe-2154552fd005/611e1517-0106-4e8e-a5f9-c0cb1aa9bae1/image.png)
+<img width="840" alt="Image" src="https://github.com/user-attachments/assets/dad34940-2626-49f0-8bf0-d0a88dde2b70" />
 
 한국의 인구밀도는 OECD 국가 중 가장 높지만, 대부분의 인구가 서울에 집중되어 지역별 인구수 불균형이 심각한 상황이다. 이러한 상황에서 **수도권 집중 문제**를 해결하기 위한 가장 현실적인 해결책은 **지역의 경제적 이점을 어필**하는 것이라고 생각하여 경제적 이점을 가볍게 보여주어 **지방 이주에 관심을 갖게 하는 것을 목적**으로 이도향촌 프로젝트를 기획하게 되었다.
 
@@ -21,15 +19,13 @@
 
 ### 1. 지방 이주 계산기
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/2b8f301c-d10b-4f79-aabe-2154552fd005/adfe7fbc-e0b0-41f3-9a67-cc3b8b9103bc/image.png)
-
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/2b8f301c-d10b-4f79-aabe-2154552fd005/ede3450b-bb06-4645-bb82-9d1d097509da/image.png)
-
+<img width="1650" alt="Image" src="https://github.com/user-attachments/assets/03122c7f-e5de-492a-aab5-dfd4e7f96626" />
+<img width="1652" alt="Image" src="https://github.com/user-attachments/assets/25cca7b2-0b1d-419b-bd49-e1bff580e0db" />
 가구원 수, 식비, 교통비, 주거비와 같은 기본적인 생활비를 입력하면 지방으로 이주했을 때 경제적으로 얼마나 절약할 수 있는지 보여준다.
 
 ### 2. 이주 지역 추천 기능
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/2b8f301c-d10b-4f79-aabe-2154552fd005/f7e5eaaa-386d-41ac-9d57-54434ff85450/image.png)
+<img width="1650" alt="Image" src="https://github.com/user-attachments/assets/efc6edf7-ac45-40cf-9d44-a9ac604b4cec" />
 
 이주 목적, 삶의 우선순위(1, 2, 3순위), 추가 조건을 입력받고 입력받은 데이터를 바탕으로 AI 기반 분석을 통해 적절한 이주 지역을 추천해주고, 이주 시의 이점을 더 구체적으로 보여준다. 
 
